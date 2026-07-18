@@ -1,0 +1,509 @@
+/* ------------------------------------------------------------------
+   TOKENS
+   El fondo (--bg) y el acento (--accent) quedaron PENDIENTES de definir
+   con vos (Bucket 4: "lo elijo yo, una foto/textura"). Lo que hay acá
+   es un placeholder neutro para poder ver la estructura funcionando —
+   cambialo por tu imagen/paleta cuando la tengas.
+------------------------------------------------------------------- */
+:root {
+  --bg: #2c2632; /* TODO: reemplazar por tu imagen/textura de fondo */
+  --ink: #c9c4cc;
+  --ink-soft: #837a8b;
+  --card: #0e0c0c;
+  --card-border: rgba(4, 4, 4, 0.16);
+  --shadow: 0 14px 34px rgba(20, 20, 18, 0.16);
+  --shadow-sm: 0 8px 18px rgba(20, 20, 18, 0.14);
+  --accent: #a9812e; /* TODO: acento pendiente, este es solo un placeholder discreto */
+
+  --font-display: 'Hibur Mono';
+  --font-mono: 'Hibur Mono';
+}
+
+.hibur-mono-regular {
+  font-family: "Hibur Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------------------------------------------------------
+   HEADER — bio mínima, una línea (Bucket 2/4)
+------------------------------------------------------------------- */
+.site-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 24px 1px;
+  flex-wrap: wrap;
+}
+
+.site-header__name {
+  font-family: 'Fraunces', var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 6vw, 28px);
+  display: block;
+}
+
+.site-header__tagline {
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  display: block;
+  padding-left: 2px;
+}
+
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: 2px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink);
+  align-self: flex-start;
+}
+
+.lang-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+main {
+  flex: 1;
+  padding: 8px 24px 24px;
+}
+
+/* ------------------------------------------------------------------
+   COLLAGE (home) — 4 ventanas superpuestas, tamaños desiguales.
+   Video&IA = protagonista (window--xl). Desktop: posicionamiento
+   absoluto para lograr el collage. Mobile: se apila (ver media query).
+------------------------------------------------------------------- */
+.collage {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 24px auto 0;
+  height: 560px;
+}
+
+.window {
+  position:absolute;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.window:hover,
+.window:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(20, 20, 18, 0.22);
+}
+
+/* Bucket 4: Video&IA es la más grande (protagonista); el resto, más chico.
+   Cada categoría tiene su propia posición/tamaño dentro del collage. */
+.window--video-ia {
+  right: 55%;
+  width: 50%;
+  height: 46%;
+  z-index: 3;
+  border-radius: 10px;
+}
+
+.window--social-media {
+  z-index: 2;
+  top: 65%;
+  left: 75%;
+  width: 200px;
+  height: 420px;
+  border-radius: 20px;
+  border: 1px solid #343432;
+}
+
+.window--bodas {
+  top: 40%;
+  width: 56%;
+  height: 58%;
+  z-index: 2;
+  right: 65%;
+  border-radius: 10px;
+}
+
+.window--videoclips {
+  bottom: 0;
+  top: 95%;
+  width: 54%;
+  height: 50%;
+  z-index: 1;
+  right: 30%;
+   border-radius: 10px;
+}
+
+.window--fotografia{
+  top: 95%;
+  left: 86%;
+  width: 42%;
+  height: 30%;
+  z-index: 4;
+}
+
+.window--demoreel{
+  top: 1%;
+  left: 50%;
+  width: 68%;
+  height: 64%;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+.window__body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.window__title {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(14px, 2vw, 20px);
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+/* ------------------------------------------------------------------
+   MEDIA / placeholder pattern — reemplazar por imágenes reales
+------------------------------------------------------------------- */
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media--placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 90px;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(27, 27, 24, 0.1) 0,
+    rgba(27, 27, 24, 0.1) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+  background-color: rgba(27, 27, 24, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.media__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-soft);
+  background: var(--card);
+  padding: 3px 6px;
+  border: 1px solid var(--card-border);
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------
+   MINI MENU — al expandir una categoría, las otras quedan solo
+   como texto arriba + flecha de volver (sin thumbnails, minimal)
+------------------------------------------------------------------- */
+.mini-menu {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 8px 0 20px;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 24px;
+}
+
+.mini-menu__back {
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--ink);
+  padding: 4px 0;
+}
+
+.mini-menu__list {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.mini-menu__item {
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--ink-soft);
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.mini-menu__item.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.mini-menu__item:hover {
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------------
+   CATEGORY VIEW — thumbnails grandes, uno tras otro, scroll vertical
+------------------------------------------------------------------- */
+.category-view {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.category-view__header {
+  margin-bottom: 28px;
+}
+
+.category-view__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(28px, 5vw, 40px);
+  margin: 0 0 8px;
+}
+
+.category-view__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 16px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project--horizontal {
+  grid-column: 1 / -1;
+}
+
+.project--horizontal .media,
+.project--horizontal .media--placeholder {
+  aspect-ratio: 16 / 9;
+}
+
+.project--vertical .media,
+.project--vertical .media--placeholder {
+  aspect-ratio: 9 / 16;
+}
+
+.project .media,
+.project .media--placeholder {
+  border-radius: 3px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ------------------------------------------------------------------
+   FOOTER — contacto siempre accesible, CV discreto (Bucket 2/3)
+------------------------------------------------------------------- */
+.site-footer {
+  display: flex;
+  gap: 20px;
+  padding: 10px 18px;
+  border-top: 1px solid var(--card-border);
+  font-size: 12px;
+}
+
+.site-footer__link {
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.site-footer__link--muted {
+  color: var(--ink-soft);
+  border-bottom-color: var(--card-border);
+}
+
+.site-footer__link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ------------------------------------------------------------------
+   RESPONSIVE — mobile: el collage se apila, deja de ser absoluto
+------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .collage {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .window {
+    position: static;
+    width: 100%;
+  }
+
+  .window--video-ia {
+    height: 160px;
+  }
+
+  .window--social-media,
+  .window--bodas,
+  .window--trabajo-artistico {
+    height: 160px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   ACCESIBILIDAD — respeta prefers-reduced-motion
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .window {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   MEDIA — botón de play custom (thumbnail) + botón de mute (autoplay)
+------------------------------------------------------------------- */
+.media-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ------------------------------------------------------------------
+   PLAYER — reproductor propio (play/pausa, barra de progreso, mute),
+   mismo comportamiento para el video en autoplay y el resto.
+------------------------------------------------------------------- */
+.player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.player__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+}
+
+.player__btn {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.player__seek {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+}
+
+.player__seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.player__seek::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+}
+.media iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
