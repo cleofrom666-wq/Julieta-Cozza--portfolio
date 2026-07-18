@@ -16,7 +16,7 @@ export const categories = [
       es: '',
       en: '',
     },
-    image: 'public/media/images/reel.png',
+    image: '/media/thumbnails/demo-reel.png',
     projects: [
       { title: 'Demo Reel', year: '2025', image: 'youtube:FqrZoPeFWQo', note: '/media/demo reel.mp4/' },
     ],
