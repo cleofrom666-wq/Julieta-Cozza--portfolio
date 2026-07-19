@@ -84,7 +84,7 @@ export default function Hero({ reelSrc, lang, name, onExplore }) {
 
         <div className="hero__body">
           <p className="hero__eyebrow" ref={eyebrowRef}>
-            {name} — {lang === 'es' ? 'editora de video & filmmaker' : 'video editor & filmmaker'}
+            {lang === 'es' ? 'editora de video & filmmaker' : 'video editor & filmmaker'}
           </p>
           <h1 className="hero__title" ref={titleRef}>
             {title.map((line) => (
