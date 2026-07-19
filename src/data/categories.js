@@ -29,7 +29,7 @@ export const categories = [
       es: 'Explorando la intersección entre video, edición e IAs generativas.',
       en: 'Exploring the intersection of filmmaking, editing and generative AI.',
     }, 
-    image: 'public/media/media/images/ia.jpeg', 
+    image: '/media/media/images/ia.jpeg', 
      //TODO: imagen/frame representativo de tu Demo Reel o AI-Assisted Work
     projects: [
       { title: { es: 'They trained you well', en: 'They trained you well' },  
@@ -62,7 +62,7 @@ export const categories = [
       es: 'Edición de video para redes sociales.',
       en: 'Video editing for social media.',
     },
-    image: 'public/media/media/images/social.png', // TODO: frame de un reel
+    image: '/media/media/images/social.png', // TODO: frame de un reel
     projects: [
       // TODO: separar en piezas si querés mostrar más de una
       { title: '', image: '/media/social media/VERTICALES_1.mp4', poster:'/media/thumbnails/VERTICALES_1.jpg' },
@@ -80,7 +80,7 @@ export const categories = [
       es: 'Edición y color para estudio de wedding films.',
       en: 'Editing and color grading for a wedding film studio.',
     },
-    image: 'public/media/media/images/bodas.png', // TODO: frame de alguna boda
+    image: '/media/media/images/bodas.png', // TODO: frame de alguna boda
     projects: [
       // TODO: título/año real de cada boda
       { title: { es: 'Niamh & Will', en: 'Niamh & Will' }, year: 2026, image: 'https://youtu.be/S-oea8bBw0Q', poster:'/media/thumbnails/Niamh & Will Montage Video.jpg' },
@@ -94,7 +94,7 @@ export const categories = [
     id: 'videoclips',
     label: { es: 'Videoclips', en: 'Music Videos' },
     intro: null, // Bucket 3: sin intro en esta sección
-    image: 'public/media/media/images/videoclips.png', 
+    image: '/media/media/images/videoclips.png', 
     projects: [
       // Bucket 3: en esta sección solo se muestra el año (sin título) —
       // "note" tiene el nombre real para que sepas cuál es cuál mientras cargás años.
