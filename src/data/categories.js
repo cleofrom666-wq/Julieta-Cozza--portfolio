@@ -134,8 +134,8 @@ export const site = {
   // placeholder editorial breve para que la sección tenga voz propia.
   // Reemplazar por tu bio real cuando la tengas.
   about: {
-    es: 'Edito y dirijo imagen en movimiento — bodas, música, marcas y piezas propias hechas con inteligencia artificial. Cada corte busca lo mismo: que el ritmo cuente la historia antes que la palabra.',
-    en: 'I edit and direct moving image — weddings, music, brands and personal work made with artificial intelligence. Every cut chases the same thing: rhythm telling the story before the words do.',
+    es: 'Editora de video para redes sociales, bodas y proyectos artísticos. Actualmente explorando la creación de imágenes y narrativas con inteligencia artificial.',
+    en: 'Video editor for social media, weddings, and artistic projects. Currently exploring AI-powered audiovisual creation.',
   },
   location: { es: 'Buenos Aires, Argentina', en: 'Buenos Aires, Argentina' },
 }

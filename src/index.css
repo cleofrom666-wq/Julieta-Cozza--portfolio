@@ -275,6 +275,21 @@ video {
   color: var(--accent);
 }
 
+.site-header__info {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.45s cubic-bezier(.22,1,.36,1),
+    transform 0.45s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+
+.site-header__info.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 /* ==================================================================
    HERO — the opening shot
 ================================================================== */
@@ -396,7 +411,7 @@ video {
 
 .hero__title {
   font-family: var(--font-display);
-  font-style: italic;
+  
   font-weight: 400;
   font-size: clamp(40px, 8.4vw, 118px);
   line-height: 0.98;

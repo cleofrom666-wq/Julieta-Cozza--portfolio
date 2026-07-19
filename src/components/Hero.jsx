@@ -64,7 +64,7 @@ export default function Hero({ reelSrc, lang, name, onExplore }) {
     return () => tl.kill()
   }, [])
 
-  const title = lang === 'es' ? ['Edito lo que', 'no se puede decir.'] : ['I edit what', "can't be said."]
+  const title = lang === 'es' ? ['Julieta Cozza'] : ['Julieta Cozza']
 
   return (
     <section className="hero">

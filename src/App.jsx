@@ -41,7 +41,7 @@ export default function App() {
       <div className="letterbox letterbox--top" aria-hidden="true" />
       <div className="letterbox letterbox--bottom" aria-hidden="true" />
       <Cursor />
-
+      
       <Header lang={lang} onToggleLang={() => setLang(lang === 'es' ? 'en' : 'es')} />
 
       <AnimatePresence mode="wait">
